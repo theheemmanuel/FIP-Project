@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../Components/Header";
-import Sidebar from "../Components/Sidebar";
+import Sidebar from "../Components/SideBar";
 import Folder from "../Components/Folder";
 
 const RootLayout = () => {
