@@ -3,7 +3,7 @@ import NotePic from "../assets/Note.png";
 
 const SideBar = () => {
   return (
-    <div className="w-[20%] min-h-[100vh] bg-[#181818] px-4 py-6">
+    <div className="w-[20%] min-h-[100vh] px-4 py-6">
       <h1 className="font-play text-xl font-bold">JotItDown 🖊</h1>
 
       <hr className="h-[1px] bg-gray-700 my-4" />
