@@ -1,16 +1,9 @@
-import { useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
 import Header from "../Components/Header";
 import Sidebar from "../Components/SideBar";
 import Folder from "../Components/Folder";
+import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-
   return (
     <div className="bg-[#181818] font-inter">
       <div className="flex">

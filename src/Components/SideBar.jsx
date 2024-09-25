@@ -6,6 +6,9 @@ import { ContextFile } from "./FileContext";
 const SideBar = () => {
   const { notes, state, dispatch } = useContext(ContextFile);
   const uniqueFolders = new Set(notes.map((item) => item.folder));
+  const recentNotes = notes
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
 
   return (
     <div className="w-[20%] min-h-[100vh] px-4 py-6">
@@ -19,13 +22,14 @@ const SideBar = () => {
         <div className="mt-4">
           <p className="text-sm">Recently Added</p>
           <hr />
-          {[1, 2, 3].map((item) => (
+          {recentNotes.map((note) => (
             <div
-              key={item}
+              onClick={() => dispatch({ type: "recentNote", payload: note })}
+              key={note.id}
               className="flex items-center mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer"
             >
               <img src={NotePic} className="w-5" alt="" />
-              <p className="text-sm">Note {item}</p>
+              <p className="text-sm">{note.title}</p>
             </div>
           ))}
         </div>
@@ -47,6 +51,15 @@ const SideBar = () => {
               <p className="text-sm">{folder}</p>
             </div>
           ))}
+          <div
+            onClick={() => dispatch({ type: "PickFolder", payload: "" })}
+            className={`flex items-center mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer ${
+              state.folder === "" && "bg-[#ffffff0D]"
+            }`}
+          >
+            <img src={FolderPic} className="w-5" alt="" />
+            <p className="text-sm">All</p>
+          </div>
         </div>
       </div>
     </div>

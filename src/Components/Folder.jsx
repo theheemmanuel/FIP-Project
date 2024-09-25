@@ -26,9 +26,14 @@ const Folder = () => {
                   }`}
                 >
                   <p className="font-semibold">{item.title}</p>
-                  <p className="text-sm">
-                    {new Date(item.date).toLocaleDateString()}
-                  </p>
+                  <div className="flex justify-between">
+                    <p className="text-sm">
+                      {new Date(item.date).toLocaleDateString()}
+                    </p>
+                    <p className="text-sm">
+                      {new Date(item.date).toLocaleTimeString()}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -42,15 +47,22 @@ const Folder = () => {
                 .map((item) => (
                   <div
                     key={item.id}
-                    className="mt-2 p-3 cursor-pointer bg-[#FFFFFF08] hover:bg-[#FFFFFF1A]"
+                    className={`mt-2 p-3 cursor-pointer bg-[#FFFFFF08] hover:bg-[#FFFFFF1A] ${
+                      state.note === item.id && "bg-[#FFFFFF1A]"
+                    }`}
                     onClick={() =>
                       dispatch({ type: "PickNote", payload: item.id })
                     }
                   >
                     <p className="font-semibold">{item.title}</p>
-                    <p className="text-sm">
-                      {new Date(item.date).toLocaleDateString()}
-                    </p>
+                    <div className="flex justify-between">
+                      <p className="text-sm">
+                        {new Date(item.date).toLocaleDateString()}
+                      </p>
+                      <p className="text-sm">
+                        {new Date(item.date).toLocaleTimeString()}
+                      </p>
+                    </div>
                   </div>
                 ))}
             </div>
