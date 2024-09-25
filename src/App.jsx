@@ -12,14 +12,11 @@ function App() {
     {
       path: "/",
       element: <RootLayout />,
+      errorElement: <Navigate replace to="/" />,
       children: [
         {
           path: "",
           element: <Home />,
-        },
-        {
-          path: "note",
-          element: <h1>Note</h1>,
         },
       ],
     },

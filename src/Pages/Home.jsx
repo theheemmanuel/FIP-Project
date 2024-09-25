@@ -1,8 +1,8 @@
 import EmptyPic from "../assets/EmptyPic.png";
 const Home = () => {
   return (
-    <div>
-      <div className="flex flex-col justify-center items-center h-[80vh] text-center">
+    <div className="h-fit sticky top-6 p-6">
+      <div className="flex flex-col justify-center items-center min-h-[80vh] text-center">
         <img src={EmptyPic} alt="" />
         <h1 className="text-[28px] font-[600]">Select a note to view</h1>
         <p className="w-2/3">
