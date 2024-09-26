@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import EmptyPic from "../assets/EmptyPic.png";
 import { ContextFile } from "../Components/FileContext";
 import date from "../assets/Date.png";
 import folder from "../assets/Folder.png";
 import NewNote from "./NewNote";
 const Home = () => {
+  const [editMode, setEditMode] = useState(false);
   const { allNotes, state, dispatch } = useContext(ContextFile);
   return (
     <>
@@ -42,9 +43,26 @@ const Home = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <h1 className="text-2xl font-[600]">{note.title}</h1>
-                  <button className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold">
-                    Edit
-                  </button>
+                  <div className="flex gap-4">
+                    {editMode ? (
+                      <button
+                        onClick={() => setEditMode(false)}
+                        className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+                      >
+                        Save
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => setEditMode(true)}
+                        className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+                      >
+                        Edit
+                      </button>
+                    )}
+                    <button className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold">
+                      Delete
+                    </button>
+                  </div>
                 </div>
                 <div className="flex gap-2 mt-4 mb-2">
                   <img src={date} alt="" />

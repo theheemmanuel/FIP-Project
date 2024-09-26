@@ -25,6 +25,9 @@ const SideBar = () => {
         <div className="mt-4">
           <p className="text-sm">Recently Added</p>
           <hr />
+          {allNotes.length === 0 && (
+            <p className="text-center py-6">No Notes Found</p>
+          )}
           {recentNotes.map((note) => (
             <div
               onClick={() => dispatch({ type: "recentNote", payload: note })}

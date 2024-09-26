@@ -93,12 +93,12 @@ export default function FileContext({ children }) {
   // );
 
   const [allNotes, setAllNotes] = useState(
-    sessionStorage.getItem("notes")
-      ? JSON.parse(sessionStorage.getItem("notes"))
+    localStorage.getItem("notes")
+      ? JSON.parse(localStorage.getItem("notes"))
       : []
   );
   useEffect(() => {
-    sessionStorage.setItem("notes", JSON.stringify(allNotes));
+    localStorage.setItem("notes", JSON.stringify(allNotes));
   }, [allNotes]);
   const addNote = (note) => {
     setAllNotes((prevNotes) => [...prevNotes, note]);
