@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { ContextFile } from "./FileContext";
 
 const Folder = () => {
-  const { notes, state, dispatch } = useContext(ContextFile);
+  const { allNotes, state, dispatch } = useContext(ContextFile);
   return (
-    <div className="w-[20%] min-h-[100vh] bg-[#1C1C1C] px-4 py-6">
+    <div className="w-1/2 min-h-[100vh] bg-[#1C1C1C] px-4 py-6">
       <div className="h-fit sticky top-6">
         {/* <input
         type="text"
@@ -15,7 +15,7 @@ const Folder = () => {
           <div>
             <h1 className="text-lg font-semibold">All Notes</h1>
             <div className="flex flex-col gap-2">
-              {notes.map((item) => (
+              {allNotes.map((item) => (
                 <div
                   onClick={() =>
                     dispatch({ type: "PickNote", payload: item.id })
@@ -26,14 +26,9 @@ const Folder = () => {
                   }`}
                 >
                   <p className="font-semibold">{item.title}</p>
-                  <div className="flex justify-between">
-                    <p className="text-sm">
-                      {new Date(item.date).toLocaleDateString()}
-                    </p>
-                    <p className="text-sm">
-                      {new Date(item.date).toLocaleTimeString()}
-                    </p>
-                  </div>
+                  <p className="text-sm">
+                    {new Date(item.date).toLocaleDateString()}
+                  </p>
                 </div>
               ))}
             </div>
@@ -42,7 +37,7 @@ const Folder = () => {
           <div>
             <h1 className="text-lg font-semibold">{state.folder}</h1>
             <div className="flex flex-col gap-2">
-              {notes
+              {allNotes
                 .filter((each) => each.folder === state.folder)
                 .map((item) => (
                   <div
@@ -55,18 +50,16 @@ const Folder = () => {
                     }
                   >
                     <p className="font-semibold">{item.title}</p>
-                    <div className="flex justify-between">
-                      <p className="text-sm">
-                        {new Date(item.date).toLocaleDateString()}
-                      </p>
-                      <p className="text-sm">
-                        {new Date(item.date).toLocaleTimeString()}
-                      </p>
-                    </div>
+                    <p className="text-sm">
+                      {new Date(item.date).toLocaleDateString()}
+                    </p>
                   </div>
                 ))}
             </div>
           </div>
+        )}
+        {allNotes.length === 0 && (
+          <p className="text-center py-6">No Notes Found</p>
         )}
       </div>
     </div>
