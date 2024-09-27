@@ -58,9 +58,10 @@ const Folder = () => {
             </div>
           </div>
         )}
-        {allNotes.length === 0 && (
-          <p className="text-center py-6">No Notes Found</p>
-        )}
+        {(allNotes.length === 0 ||
+          (state.folder !== "" &&
+            allNotes.filter((each) => each.folder === state.folder).length ===
+              0)) && <p className="text-center py-6">No Notes Found</p>}
       </div>
     </div>
   );

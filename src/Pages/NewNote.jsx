@@ -16,7 +16,7 @@ const NewNote = () => {
       toast({
         description: "Input Note Title",
         status: "error",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
       });
       result = false;
@@ -25,7 +25,7 @@ const NewNote = () => {
       toast({
         description: "Select Note Folder",
         status: "error",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
       });
       result = false;
@@ -34,7 +34,7 @@ const NewNote = () => {
       toast({
         description: "Input Note Content",
         status: "error",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
       });
       result = false;
@@ -55,11 +55,17 @@ const NewNote = () => {
         body: note,
       };
       addNote(newNote);
-      console.log("Note added:", newNote);
       setTitle("");
       setFolder("");
       setNote("");
       dispatch({ type: "addedNote", payload: newNote.id });
+      toast({
+        title: "Note Created.",
+        description: "Your note has been created successfully.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

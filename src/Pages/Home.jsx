@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import EmptyPic from "../assets/EmptyPic.png";
 import { ContextFile } from "../Components/FileContext";
 import date from "../assets/Date.png";
@@ -14,19 +14,50 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 const Home = () => {
+  const { allNotes, state, dispatch, deleteNote, editNote } =
+    useContext(ContextFile);
+  const currentNote = allNotes.find((note) => note.id === state.note);
+  useEffect(() => {
+    if (currentNote) {
+      setEdittedNote(currentNote.body);
+    }
+    setEditMode(false);
+  }, [currentNote]);
   const [editMode, setEditMode] = useState(false);
-  const { allNotes, state, dispatch, deleteNote } = useContext(ContextFile);
+  const [edittedNote, setEdittedNote] = useState(
+    currentNote ? currentNote.body : ""
+  );
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteButton = () => {
     deleteNote(state.note);
     dispatch({ type: "clearNote" });
     onClose();
+    toast({
+      title: "Note Deleted.",
+      description: "Your note has been deleted successfully.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+  const toast = useToast();
+  const saveButton = () => {
+    editNote(state.note, edittedNote);
+    setEditMode(false);
+    toast({
+      title: "Note Updated.",
+      description: "Your note has been updated successfully.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xs">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Delete Note!</ModalHeader>
@@ -74,12 +105,12 @@ const Home = () => {
                   </button>
                   <h1 className="font-play text-xl font-bold">JotItDown 🖊</h1>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center gap-2">
                   <h1 className="text-2xl font-[600]">{note.title}</h1>
                   <div className="flex gap-4">
                     {editMode ? (
                       <button
-                        onClick={() => setEditMode(false)}
+                        onClick={saveButton}
                         className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
                       >
                         Save
@@ -113,12 +144,20 @@ const Home = () => {
                 <div className="flex gap-4 mt-4 mb-2">
                   <img src={folder} alt="" />
                   <p className="text-sm font-semibold text-[#FFFFFF99]">
-                    Folder
+                    Folder: {note.folder}
                   </p>
-                  <p className="text-sm">{note.folder}</p>
                 </div>
                 <hr />
-                <p className="my-6">{note.body}</p>
+                {editMode ? (
+                  <textarea
+                    value={edittedNote}
+                    onChange={(e) => setEdittedNote(e.target.value)}
+                    className="my-6 bg-[#1C1C1C] w-full min-h-[200px] outline-none p-2"
+                    autoFocus
+                  ></textarea>
+                ) : (
+                  <p className="my-6 whitespace-pre-wrap">{note.body}</p>
+                )}
               </div>
             ))
         )}
