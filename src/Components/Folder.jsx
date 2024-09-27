@@ -26,7 +26,7 @@ const Folder = () => {
                   }`}
                 >
                   <p className="font-semibold">{item.title}</p>
-                  <p className="text-sm">
+                  <p className="text-sm pt-1">
                     {new Date(item.date).toLocaleDateString()}
                   </p>
                 </div>
@@ -50,7 +50,7 @@ const Folder = () => {
                     }
                   >
                     <p className="font-semibold">{item.title}</p>
-                    <p className="text-sm">
+                    <p className="text-sm pt-1">
                       {new Date(item.date).toLocaleDateString()}
                     </p>
                   </div>

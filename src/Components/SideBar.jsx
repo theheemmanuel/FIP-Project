@@ -18,7 +18,7 @@ const SideBar = () => {
         <hr className="h-[1px] bg-gray-700 my-4" />
         <button
           onClick={() => dispatch({ type: "newNote" })}
-          className="w-full bg-[#FFFFFF0D] py-2 font-bold rounded-lg"
+          className="w-full bg-[#312EB5] py-2 font-bold rounded-lg"
         >
           + New Note
         </button>
@@ -54,7 +54,7 @@ const SideBar = () => {
                 }
                 key={folder}
                 className={`flex items-center capitalize mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer ${
-                  state.folder === folder && "bg-[#ffffff0D]"
+                  state.folder === folder && "bg-[#312EB5]"
                 }`}
               >
                 <img src={FolderPic} className="w-5" alt="" />
@@ -65,7 +65,7 @@ const SideBar = () => {
           <div
             onClick={() => dispatch({ type: "PickFolder", payload: "" })}
             className={`flex items-center mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer ${
-              state.folder === "" && "bg-[#ffffff0D]"
+              state.folder === "" && "bg-[#312EB5]"
             }`}
           >
             <img src={FolderPic} className="w-5" alt="" />

@@ -74,7 +74,7 @@ const NewNote = () => {
       <div className=" pb-4 flex justify-between">
         <button
           onClick={() => dispatch({ type: "clearNote" })}
-          className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+          className="bg-[#312EB5] px-4 py-2 rounded-lg text-sm font-bold"
         >
           &larr; GO BACK
         </button>
@@ -148,7 +148,7 @@ const NewNote = () => {
         <div className="text-center">
           <button
             onClick={submitForm}
-            className="px-6 bg-[#FFFFFF0D] py-2 font-bold rounded-lg mt-4"
+            className="px-6 bg-[#312EB5] py-2 font-bold rounded-lg mt-4"
           >
             Save Note
           </button>

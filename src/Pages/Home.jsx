@@ -84,7 +84,7 @@ const Home = () => {
             </p>
             <button
               onClick={() => dispatch({ type: "newNote" })}
-              className="px-4 bg-[#FFFFFF0D] py-2 font-bold rounded-lg mt-4"
+              className="px-4 bg-[#312EB5] py-2 font-bold rounded-lg mt-4"
             >
               + New Note
             </button>
@@ -99,7 +99,7 @@ const Home = () => {
                 <div className=" pb-4 flex justify-between">
                   <button
                     onClick={() => dispatch({ type: "clearNote" })}
-                    className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+                    className="bg-[#312EB5] px-4 py-2 rounded-lg text-sm font-bold"
                   >
                     &larr; GO BACK
                   </button>
@@ -111,7 +111,7 @@ const Home = () => {
                     {editMode ? (
                       <button
                         onClick={saveButton}
-                        className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+                        className="bg-[#312EB5] px-4 py-2 rounded-lg text-sm font-bold"
                       >
                         Save
                       </button>
