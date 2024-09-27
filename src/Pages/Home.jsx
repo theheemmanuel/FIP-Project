@@ -17,8 +17,13 @@ import {
 } from "@chakra-ui/react";
 const Home = () => {
   const [editMode, setEditMode] = useState(false);
-  const { allNotes, state, dispatch } = useContext(ContextFile);
+  const { allNotes, state, dispatch, deleteNote } = useContext(ContextFile);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const deleteButton = () => {
+    deleteNote(state.note);
+    dispatch({ type: "clearNote" });
+    onClose();
+  };
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -28,7 +33,7 @@ const Home = () => {
           <ModalCloseButton />
           <ModalBody>Are you sure you want to delete this note?</ModalBody>
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={onClose}>
+            <Button colorScheme="red" mr={3} onClick={deleteButton}>
               Yes
             </Button>
             <Button colorScheme="blue" onClick={onClose}>
@@ -37,7 +42,7 @@ const Home = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <div className="h-fit sticky top-6 px-6">
+      <div className="text-white h-fit sticky top-6 px-6">
         {state.note === "" && !state.newNote ? (
           <div className="flex flex-col justify-center items-center min-h-[80vh] text-center">
             <img src={EmptyPic} alt="" />

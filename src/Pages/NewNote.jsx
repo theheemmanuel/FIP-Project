@@ -1,23 +1,45 @@
 import { useContext } from "react";
 import { ContextFile } from "../Components/FileContext";
 import { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 
 const NewNote = () => {
   const [title, setTitle] = useState("");
-  const [folder, setFolder] = useState("each");
+  const [folder, setFolder] = useState("");
   const [note, setNote] = useState("");
 
+  const toast = useToast();
+
   const validateForm = () => {
+    let result = true;
     if (title === "") {
-      return false;
+      toast({
+        description: "Input Note Title",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      result = false;
     }
     if (folder === "") {
-      return false;
+      toast({
+        description: "Select Note Folder",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      result = false;
     }
     if (note === "") {
-      return false;
+      toast({
+        description: "Input Note Content",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      result = false;
     }
-    return true;
+    return result;
   };
 
   const { dispatch, addNote } = useContext(ContextFile);
@@ -114,7 +136,7 @@ const NewNote = () => {
             value={note}
             onChange={(e) => setNote(e.target.value)}
             id="note"
-            className="outline-none bg-transparent text-sm w-full font-bold p-2 min-h-[200px]"
+            className="outline-none bg-transparent text-sm w-full p-2 min-h-[200px]"
           />
         </div>
         <div className="text-center">

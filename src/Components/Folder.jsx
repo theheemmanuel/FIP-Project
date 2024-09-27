@@ -4,7 +4,7 @@ import { ContextFile } from "./FileContext";
 const Folder = () => {
   const { allNotes, state, dispatch } = useContext(ContextFile);
   return (
-    <div className="w-1/2 min-h-[100vh] bg-[#1C1C1C] px-4 py-6">
+    <div className="w-1/2 min-h-[100vh] bg-[#1C1C1C] px-4 py-6 text-white">
       <div className="h-fit sticky top-6">
         {/* <input
         type="text"

@@ -103,9 +103,14 @@ export default function FileContext({ children }) {
   const addNote = (note) => {
     setAllNotes((prevNotes) => [...prevNotes, note]);
   };
+  const deleteNote = (id) => {
+    setAllNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  };
 
   return (
-    <ContextFile.Provider value={{ allNotes, state, dispatch, addNote }}>
+    <ContextFile.Provider
+      value={{ allNotes, state, dispatch, addNote, deleteNote }}
+    >
       {children}
     </ContextFile.Provider>
   );

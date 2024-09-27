@@ -11,7 +11,7 @@ const SideBar = () => {
     .slice(0, 3);
 
   return (
-    <div className="w-1/2 min-h-[100vh] px-4 py-6">
+    <div className="w-1/2 min-h-[100vh] px-4 py-6 text-white">
       <div className="h-fit sticky top-6">
         <h1 className="font-play text-xl font-bold">JotItDown 🖊</h1>
 
