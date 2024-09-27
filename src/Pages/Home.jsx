@@ -4,11 +4,39 @@ import { ContextFile } from "../Components/FileContext";
 import date from "../assets/Date.png";
 import folder from "../assets/Folder.png";
 import NewNote from "./NewNote";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 const Home = () => {
   const [editMode, setEditMode] = useState(false);
   const { allNotes, state, dispatch } = useContext(ContextFile);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Delete Note!</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Are you sure you want to delete this note?</ModalBody>
+          <ModalFooter>
+            <Button colorScheme="red" mr={3} onClick={onClose}>
+              Yes
+            </Button>
+            <Button colorScheme="blue" onClick={onClose}>
+              No
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <div className="h-fit sticky top-6 px-6">
         {state.note === "" && !state.newNote ? (
           <div className="flex flex-col justify-center items-center min-h-[80vh] text-center">
@@ -59,7 +87,10 @@ const Home = () => {
                         Edit
                       </button>
                     )}
-                    <button className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold">
+                    <button
+                      onClick={onOpen}
+                      className="bg-[#FFFFFF0D] px-4 py-2 rounded-lg text-sm font-bold"
+                    >
                       Delete
                     </button>
                   </div>
