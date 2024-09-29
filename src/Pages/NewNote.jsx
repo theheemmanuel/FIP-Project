@@ -14,7 +14,7 @@ const NewNote = () => {
     let result = true;
     if (title === "") {
       toast({
-        title: "Note title",
+        title: "Note Title",
         description: "Input Note Title",
         status: "error",
         duration: 3000,
