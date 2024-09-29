@@ -14,6 +14,7 @@ const NewNote = () => {
     let result = true;
     if (title === "") {
       toast({
+        title: "Note title",
         description: "Input Note Title",
         status: "error",
         duration: 3000,
@@ -23,6 +24,7 @@ const NewNote = () => {
     }
     if (folder === "") {
       toast({
+        title: "Note Folder",
         description: "Select Note Folder",
         status: "error",
         duration: 3000,
@@ -32,6 +34,7 @@ const NewNote = () => {
     }
     if (note === "") {
       toast({
+        title: "Note Content",
         description: "Input Note Content",
         status: "error",
         duration: 3000,
@@ -89,15 +92,16 @@ const NewNote = () => {
             </label>
             <input
               id="noteTitle"
+              autoFocus
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="outline-none bg-transparent text-sm w-full font-semibold"
+              className="outline-none bg-transparent w-full font-semibold"
               placeholder="Note title"
             />
           </div>
           <div className="flex items-center gap-1 rounded-md w-fit p-2 bg-[#FFFFFF0D]">
-            <label htmlFor="noteTitle" className="text-sm font-semibold">
+            <label htmlFor="noteTitle" className="font-semibold">
               Folder:
             </label>
             <select
@@ -135,14 +139,14 @@ const NewNote = () => {
           </div>
         </div>
         <div className="my-5 flexflex-col items-center gap-2 rounded-md w-full p-2 bg-[#FFFFFF0D] flex-1">
-          <label htmlFor="note" className="text-sm font-semibold">
+          <label htmlFor="note" className="font-semibold">
             Note:
           </label>
           <textarea
             value={note}
             onChange={(e) => setNote(e.target.value)}
             id="note"
-            className="outline-none bg-transparent text-sm w-full p-2 min-h-[200px]"
+            className="outline-none bg-transparent w-full p-2 min-h-[200px]"
           />
         </div>
         <div className="text-center">
