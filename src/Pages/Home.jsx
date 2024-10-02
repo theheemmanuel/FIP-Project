@@ -152,7 +152,7 @@ const Home = () => {
                   <textarea
                     value={edittedNote}
                     onChange={(e) => setEdittedNote(e.target.value)}
-                    className="my-6 bg-[#1C1C1C] w-full min-h-[200px] outline-none p-2"
+                    className="my-6 bg-[#1C1C1C] w-full min-h-[60vh] outline-none p-2"
                     autoFocus
                   ></textarea>
                 ) : (
