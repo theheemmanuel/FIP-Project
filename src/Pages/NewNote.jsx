@@ -104,38 +104,14 @@ const NewNote = () => {
             <label htmlFor="noteTitle" className="font-semibold">
               Folder:
             </label>
-            <select
-              className="bg-transparent outline-none cursor-pointer"
+            <input
+              id="noteTitle"
+              type="text"
+              value={folder}
               onChange={(e) => setFolder(e.target.value)}
-            >
-              <option className="" value="">
-                Select Folder
-              </option>
-              <option className="" value="Academics">
-                Academics
-              </option>
-              <option className="" value="Events">
-                Events
-              </option>
-              <option className="" value="Finances">
-                Finances
-              </option>
-              <option className="" value="Perrsonal">
-                Personal
-              </option>
-              <option className="" value="Tech">
-                Tech
-              </option>
-              <option className="" value="Travel">
-                Travel
-              </option>
-              <option className="" value="Work">
-                Work
-              </option>
-              <option className="" value="Others">
-                Others
-              </option>
-            </select>
+              className="outline-none bg-transparent w-full font-semibold"
+              placeholder="Note Folder"
+            />
           </div>
         </div>
         <div className="my-5 flexflex-col items-center gap-2 rounded-md w-full p-2 bg-[#FFFFFF0D] flex-1">
