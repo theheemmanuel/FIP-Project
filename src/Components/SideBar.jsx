@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import FolderPic from "../assets/Folder.png";
+import OpenFolder from "../assets/Open.png";
 import NotePic from "../assets/Note.png";
 import { ContextFile } from "./FileContext";
 
@@ -23,7 +24,7 @@ const SideBar = () => {
           + New Note
         </button>
         <div className="mt-4">
-          <p className="text-sm">Recently Added</p>
+          <p className="text-sm font-[600]">Recently Added</p>
           <hr />
           {allNotes.length === 0 && (
             <p className="text-center py-6">No Notes Found</p>
@@ -41,7 +42,7 @@ const SideBar = () => {
         </div>
         <div className="mt-4">
           <div className="flex justify-between items-center mb-1">
-            <p className="text-sm">Folders</p>
+            <p className="text-sm font-[600]">Folders</p>
             <img src={FolderPic} className="w-5" alt="" />
           </div>
           <hr />
@@ -54,10 +55,14 @@ const SideBar = () => {
                 }
                 key={folder}
                 className={`flex items-center capitalize mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer ${
-                  state.folder === folder && "bg-[#312EB5]"
+                  state.folder === folder && "bg-[#312EB5] hover:bg-[#312EB5]"
                 }`}
               >
-                <img src={FolderPic} className="w-5" alt="" />
+                {state.folder === folder ? (
+                  <img src={OpenFolder} className="w-5" alt="" />
+                ) : (
+                  <img src={FolderPic} className="w-5" alt="" />
+                )}
                 <p className="text-sm">{folder}</p>
               </div>
             ))}
@@ -65,10 +70,14 @@ const SideBar = () => {
           <div
             onClick={() => dispatch({ type: "PickFolder", payload: "" })}
             className={`flex items-center mt-2 gap-3 hover:bg-[#ffffff0D] hover:font-semibold rounded-lg p-2 cursor-pointer ${
-              state.folder === "" && "bg-[#312EB5]"
+              state.folder === "" && "bg-[#312EB5] hover:bg-[#312EB5]"
             }`}
           >
-            <img src={FolderPic} className="w-5" alt="" />
+            {state.folder === "" ? (
+              <img src={OpenFolder} className="w-5" alt="" />
+            ) : (
+              <img src={FolderPic} className="w-5" alt="" />
+            )}
             <p className="text-sm">All</p>
           </div>
         </div>
